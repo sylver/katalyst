@@ -1,0 +1,27 @@
+app:
+  build: .
+  ports:
+    - "8000:8000"
+  volumes:
+   - ./apps:/app/apps
+   - ./config:/app/config
+   - ./mix.exs:/app/mix.exs
+   - ./mix.lock:/app/mix.lock
+  links:
+    - db:db
+  env_file: .env
+
+dbdata:
+  image: postgres:9.5
+  volumes:
+    - /var/lib/postgresql
+  command: /bin/true
+  env_file: .env
+
+db:
+  image: postgres:9.5
+  volumes_from:
+    - dbdata
+  ports:
+    - "5432"
+  env_file: .env

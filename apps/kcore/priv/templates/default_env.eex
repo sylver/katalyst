@@ -1,0 +1,23 @@
+## Katalyst environment variables configuration file for local dev
+##
+## This file is used mainly by docker-compose to populate environment variables
+## in the main app container.
+##
+
+## THIS FILE MUST NOT BE VERSIONED AND IS IGNORED IN THE .gitignore FILE
+
+## docker-compose config
+COMPOSE_PROJECT_NAME=katalyst
+
+## Elixir build paths 
+BUILD_PATH=/app/_build
+DEPS_PATH=/app/_deps
+
+## Main config
+PORT=8000
+SSL=false
+
+## DB
+POSTGRES_PASSWORD=postgres
+DATABASE_URL=postgres://postgres:postgres@db/db
+DATABASE_URL_TEST=postgres://postgres:postgres@db/db_test
